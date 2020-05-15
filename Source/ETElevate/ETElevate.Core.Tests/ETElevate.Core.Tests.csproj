@@ -16,4 +16,10 @@
     <ProjectReference Include="..\ETElevate.Core\ETElevate.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="TestDataFiles\CommunityLabResults.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

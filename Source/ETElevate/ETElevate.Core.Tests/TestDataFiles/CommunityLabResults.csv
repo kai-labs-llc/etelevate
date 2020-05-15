@@ -1,0 +1,6 @@
+﻿"First Name","Last Name","Date of Birth","Patient ID","Observation Date","Result Date","Lab Test Type","Result Value"
+"John","Smith","01/01/1977","123456789","02/01/2020","02/02/2020","A1C","5.7"
+"John","Smith","01/01/1977","123456789","02/01/2020","02/02/2020","Fasting Glucose","100mg"
+"John","Smith","01/01/1977","123456789","02/01/2020","02/02/2020","Cholesterol LDL","127mg"
+"John","Smith","01/01/1977","123456789","02/01/2020","02/02/2020","Cholesterol HDL","62mg"
+"John","Smith","01/01/1977","123456789","02/01/2020","02/02/2020","Cholesterol Total","189mg"
