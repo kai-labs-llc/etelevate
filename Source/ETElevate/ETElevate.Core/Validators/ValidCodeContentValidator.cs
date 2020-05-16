@@ -2,7 +2,7 @@
 
 namespace ETElevate.Core
 {
-    public class ValidCodeContentValidator : IValueContentValidator
+    public class ValidCodeContentValidator : IValidator
     {
         private readonly IList<string> codeList;
 
@@ -11,7 +11,7 @@ namespace ETElevate.Core
             this.codeList = codeList;
         }
 
-        public bool CheckValue(string value)
+        public bool Check(string value)
         {
             if (string.IsNullOrEmpty(value))
             {

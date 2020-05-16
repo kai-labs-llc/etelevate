@@ -15,10 +15,10 @@ namespace ETElevate.Core.Tests
         [TestCase("003")]
         [TestCase("CodeFour")]
         [TestCase("CodeFive")]
-        public void WhenCodeIsInList_CheckValue_ReturnsTrue(string fieldValue)
+        public void WhenCodeIsInList_Check_ReturnsTrue(string fieldValue)
         {
             var validator = new ValidCodeContentValidator(validCodes);            
-            var isValid = validator.CheckValue(fieldValue);
+            var isValid = validator.Check(fieldValue);
 
             Assert.IsTrue(isValid);
         }
@@ -29,28 +29,28 @@ namespace ETElevate.Core.Tests
         [TestCase("CodeThree")]
         [TestCase("CODEFOUR")]
         [TestCase("CODEFIVE")]
-        public void WhenCodeIsNotInList_CheckValue_ReturnsFalse(string fieldValue)
+        public void WhenCodeIsNotInList_Check_ReturnsFalse(string fieldValue)
         {
             var validator = new ValidCodeContentValidator(validCodes);
-            Assert.IsFalse(validator.CheckValue(fieldValue));            
+            Assert.IsFalse(validator.Check(fieldValue));            
         }
 
         [Test]
-        public void WhenValueIsNullAndNotInList_CheckValue_ReturnsFalse()
+        public void WhenValueIsNullAndNotInList_Check_ReturnsFalse()
         {
             var validator = new ValidCodeContentValidator(validCodes);
 
-            Assert.IsFalse(validator.CheckValue(null));
+            Assert.IsFalse(validator.Check(null));
         }
 
         [Test]
-        public void WhenValueIsNullAndInList_CheckValue_ReturnsFalse()
+        public void WhenValueIsNullAndInList_Check_ReturnsFalse()
         {
             var validCodesWithNullAndEmpty = validCodes.Concat(new[] { null, string.Empty }).ToList();
             var validator = new ValidCodeContentValidator(validCodesWithNullAndEmpty);
 
-            Assert.IsFalse(validator.CheckValue(null));
-            Assert.IsFalse(validator.CheckValue(string.Empty));
+            Assert.IsFalse(validator.Check(null));
+            Assert.IsFalse(validator.Check(string.Empty));
         }
     }
 }

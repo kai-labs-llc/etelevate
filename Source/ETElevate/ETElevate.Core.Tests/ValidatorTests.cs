@@ -17,8 +17,8 @@ namespace ETElevate.Core.Tests
             var dataRecord = new DataRecord();
             dataRecord.SetValue(fieldName, "Michael");
 
-            var validator = new DataRecordValidator();
-            var isValid = validator.CheckRequired(dataRecord, fieldName);
+            var validator = new RequiredValidator();
+            var isValid = validator.Check(dataRecord.GetValue(fieldName));
 
             Assert.IsTrue(isValid);
         }
@@ -30,8 +30,8 @@ namespace ETElevate.Core.Tests
         {
             var dataRecord = new DataRecord();
             dataRecord.SetValue(fieldName, fieldValue);
-            var validator = new DataRecordValidator();
-            var isValid = validator.CheckRequired(dataRecord, fieldName);
+            var validator = new RequiredValidator();
+            var isValid = validator.Check(dataRecord.GetValue(fieldName));
 
             Assert.IsFalse(isValid);
         }
@@ -40,9 +40,9 @@ namespace ETElevate.Core.Tests
         public void WhenFieldIsNeverSet_Required_ThrowsException()
         {
             var dataRecord = new DataRecord();
-            var validator = new DataRecordValidator();
+            var validator = new RequiredValidator();
 
-            Assert.Throws<ArgumentException>(() => validator.CheckRequired(dataRecord, fieldName));
+            Assert.Throws<ArgumentException>(() => validator.Check(dataRecord.GetValue(fieldName)));
         }
 
         [Test]
@@ -57,8 +57,8 @@ namespace ETElevate.Core.Tests
             var dataRecord = new DataRecord();
             dataRecord.SetValue(fieldName, fieldValue);
 
-            var validator = new DataRecordValidator();
-            var isValid = validator.CheckMaxLength(dataRecord, fieldName, maxLength);
+            var validator = new MaxLengthValidator(maxLength);
+            var isValid = validator.Check(dataRecord.GetValue(fieldName));
 
             Assert.IsTrue(isValid);
         }
@@ -70,8 +70,8 @@ namespace ETElevate.Core.Tests
         {
             var dataRecord = new DataRecord();
             dataRecord.SetValue(fieldName, fieldValue);
-            var validator = new DataRecordValidator();
-            var isValid = validator.CheckMaxLength(dataRecord, fieldName, maxLength);
+            var validator = new MaxLengthValidator(maxLength);
+            var isValid = validator.Check(dataRecord.GetValue(fieldName));
 
             Assert.IsFalse(isValid);
         }
@@ -80,9 +80,9 @@ namespace ETElevate.Core.Tests
         public void WhenFieldIsNeverSet_MaxLength_ThrowsException()
         {
             var dataRecord = new DataRecord();
-            var validator = new DataRecordValidator();
+            var validator = new MaxLengthValidator(100);
 
-            Assert.Throws<ArgumentException>(() => validator.CheckRequired(dataRecord, fieldName));
+            Assert.Throws<ArgumentException>(() => validator.Check(dataRecord.GetValue(fieldName)));
         }
 
         [Test]
@@ -95,8 +95,8 @@ namespace ETElevate.Core.Tests
             var dataRecord = new DataRecord();
             dataRecord.SetValue(fieldName, fieldValue);
 
-            var validator = new DataRecordValidator();
-            var isValid = validator.CheckFormat(dataRecord, fieldName, formatRegex);
+            var validator = new FormatValidator(formatRegex);
+            var isValid = validator.Check(dataRecord.GetValue(fieldName));
 
             Assert.IsTrue(isValid);
         }

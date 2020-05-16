@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ETElevate.Core
 {
-    public class ValidDateContentValidator : IValueContentValidator
+    public class ValidDateContentValidator : IValidator
     {
         private string dateFormat;
         private CultureInfo cultureInfo;
@@ -25,7 +25,7 @@ namespace ETElevate.Core
             this.maxDate = maxDate;
         }
 
-        public bool CheckValue(string value)
+        public bool Check(string value)
         {
             if (!DateTime.TryParseExact(value,
                 dateFormat,

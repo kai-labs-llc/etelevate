@@ -18,9 +18,7 @@ namespace ETElevate.Core.Tests
             dataRecord.SetValue("BirthDate", dateString);
 
             var validDateValidator = new ValidDateContentValidator(dateFormat, CultureInfo.CurrentCulture);
-            var validator = new DataRecordValidator();
-
-            var isValid = validator.CheckContent(dataRecord, "BirthDate", validDateValidator);
+            var isValid = validDateValidator.Check(dataRecord.GetValue("BirthDate"));
 
             Assert.IsTrue(isValid);
         }
@@ -38,9 +36,7 @@ namespace ETElevate.Core.Tests
             dataRecord.SetValue("BirthDate", dateString);
 
             var validDateValidator = new ValidDateContentValidator(dateFormat, CultureInfo.CurrentCulture);
-            var validator = new DataRecordValidator();
-
-            var isValid = validator.CheckContent(dataRecord, "BirthDate", validDateValidator);
+            var isValid = validDateValidator.Check(dataRecord.GetValue("BirthDate"));
 
             Assert.IsFalse(isValid);
         }
@@ -57,8 +53,7 @@ namespace ETElevate.Core.Tests
                 DateTime.ParseExact(minDate, dateFormat, CultureInfo.CurrentCulture, DateTimeStyles.None),
                 DateTime.ParseExact(maxDate, dateFormat, CultureInfo.CurrentCulture, DateTimeStyles.None));
 
-            var validator = new DataRecordValidator();
-            var isValid = validator.CheckContent(dataRecord, "BirthDate", validDateValidator);
+            var isValid = validDateValidator.Check(dataRecord.GetValue("BirthDate"));
 
             Assert.IsTrue(isValid);
         }
@@ -78,8 +73,7 @@ namespace ETElevate.Core.Tests
                 DateTime.ParseExact(minDate, dateFormat, CultureInfo.CurrentCulture, DateTimeStyles.None),
                 DateTime.ParseExact(maxDate, dateFormat, CultureInfo.CurrentCulture, DateTimeStyles.None));
 
-            var validator = new DataRecordValidator();
-            var isValid = validator.CheckContent(dataRecord, "BirthDate", validDateValidator);
+            var isValid = validDateValidator.Check(dataRecord.GetValue("BirthDate"));
 
             Assert.IsFalse(isValid);
         }

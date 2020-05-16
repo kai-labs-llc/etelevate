@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using Newtonsoft.Json.Converters;
+using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace ETElevate.Core
 {

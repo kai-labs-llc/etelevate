@@ -1,0 +1,184 @@
+﻿{
+  "FileType": "CommaSeparatedValues",
+  "FirstLineIsColumnHeaders": true,
+  "FieldSpecs": [
+    {
+      "Name": "First Name",
+      "ValidatorSpecs": [
+        {
+          "Type": "Required",
+          "Parameters": [
+
+          ]
+        },
+        {
+          "Type": "MaxLength",
+          "Parameters": [
+            {
+              "Name": "MaxCharacterCount",
+              "Value": 100
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Name": "Last Name",
+      "ValidatorSpecs": [
+        {
+          "Type": "Required",
+          "Parameters": [
+
+          ]
+        },
+        {
+          "Type": "MaxLength",
+          "Parameters": [
+            {
+              "Name": "MaxCharacterCount",
+              "Value": 100
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Name": "Date of Birth",
+      "ValidatorSpecs": [
+        {
+          "Type": "Required",
+          "Parameters": [
+
+          ]
+        },
+        {
+          "Type": "Format",
+          "Parameters": [
+            {
+              "Name": "FormatRegexPattern",
+              "Value": "\\d{2}/\\d{2}/\\{d}4"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Name": "Patient ID",
+      "ValidatorSpecs": [
+        {
+          "Type": "Required",
+          "Parameters": [
+
+          ]
+        },
+        {
+          "Type": "MaxLength",
+          "Parameters": [
+            {
+              "Name": "MaxCharacterCount",
+              "Value": 15
+            }
+          ]
+        },
+        {
+          "Type": "Format",
+          "Parameters": [
+            {
+              "Name": "FormatRegexPattern",
+              "Value": "899\\d{12}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Name": "Observation Date",
+      "ValidatorSpecs": [
+        {
+          "Type": "Required",
+          "Parameters": [
+
+          ]
+        },
+        {
+          "Type": "Format",
+          "Parameters": [
+            {
+              "Name": "FormatRegexPattern",
+              "Value": "\\d{2}/\\d{2}/\\{d}4"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Name": "Result Date",
+      "ValidatorSpecs": [
+        {
+          "Type": "Required",
+          "Parameters": [
+
+          ]
+        },
+        {
+          "Type": "Format",
+          "Parameters": [
+            {
+              "Name": "FormatRegexPattern",
+              "Value": "\\d{2}/\\d{2}/\\{d}4"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Name": "Lab Test Type",
+      "ValidatorSpecs": [
+        {
+          "Type": "Required",
+          "Parameters": [
+
+          ]
+        },
+        {
+          "Type": "MaxLength",
+          "Parameters": [
+            {
+              "Name": "MaxCharacterCount",
+              "Value": 15
+            }
+          ]
+        },
+        {
+          "Type": "Code",
+          "Parameters": [
+            {
+              "Name": "CodeList",
+              "Value": "83036,82947,83721,83718,82465"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Name": "Result Value",
+      "ValidatorSpecs": [
+        {
+          "Type": "Required",
+          "Parameters": [
+
+          ]
+        },
+        {
+          "Type": "MaxLength",
+          "Parameters": [
+            {
+              "Name": "MaxCharacterCount",
+              "Value": 50
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

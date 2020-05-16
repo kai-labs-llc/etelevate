@@ -20,6 +20,9 @@
     <None Update="TestDataFiles\CommunityLabResults.csv">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="TestDataFiles\CommunityLabsFormat.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

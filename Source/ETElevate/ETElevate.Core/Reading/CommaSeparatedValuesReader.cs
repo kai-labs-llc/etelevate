@@ -29,6 +29,7 @@ namespace ETElevate.Core
             }
 
             var lineData = reader.ReadLine();
+            currentLine++;
             
             // Deliberately naive implementation placeholder for parsing the CSV line.
             return lineData.Split(",");
