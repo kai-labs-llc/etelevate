@@ -18,9 +18,9 @@ namespace ETElevate.Core.Tests
             dataRecord.SetValue("BirthDate", dateString);
 
             var validDateValidator = new ValidDateContentValidator(dateFormat, CultureInfo.CurrentCulture);
-            var isValid = validDateValidator.Check(dataRecord.GetValue("BirthDate"));
+            var result = validDateValidator.Check(dataRecord.GetValue("BirthDate"));
 
-            Assert.IsTrue(isValid);
+            Assert.IsTrue(result.IsValid);
         }
 
         [Test]
@@ -36,9 +36,9 @@ namespace ETElevate.Core.Tests
             dataRecord.SetValue("BirthDate", dateString);
 
             var validDateValidator = new ValidDateContentValidator(dateFormat, CultureInfo.CurrentCulture);
-            var isValid = validDateValidator.Check(dataRecord.GetValue("BirthDate"));
+            var result = validDateValidator.Check(dataRecord.GetValue("BirthDate"));
 
-            Assert.IsFalse(isValid);
+            Assert.IsFalse(result.IsValid);
         }
 
         [Test]
@@ -53,9 +53,9 @@ namespace ETElevate.Core.Tests
                 DateTime.ParseExact(minDate, dateFormat, CultureInfo.CurrentCulture, DateTimeStyles.None),
                 DateTime.ParseExact(maxDate, dateFormat, CultureInfo.CurrentCulture, DateTimeStyles.None));
 
-            var isValid = validDateValidator.Check(dataRecord.GetValue("BirthDate"));
+            var result = validDateValidator.Check(dataRecord.GetValue("BirthDate"));
 
-            Assert.IsTrue(isValid);
+            Assert.IsTrue(result.IsValid);
         }
 
         [Test]
@@ -73,9 +73,9 @@ namespace ETElevate.Core.Tests
                 DateTime.ParseExact(minDate, dateFormat, CultureInfo.CurrentCulture, DateTimeStyles.None),
                 DateTime.ParseExact(maxDate, dateFormat, CultureInfo.CurrentCulture, DateTimeStyles.None));
 
-            var isValid = validDateValidator.Check(dataRecord.GetValue("BirthDate"));
+            var result = validDateValidator.Check(dataRecord.GetValue("BirthDate"));
 
-            Assert.IsFalse(isValid);
+            Assert.IsFalse(result.IsValid);
         }
     }
 }

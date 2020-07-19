@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ETElevate.Core.Validators;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
@@ -25,7 +26,7 @@ namespace ETElevate.Core
             this.maxDate = maxDate;
         }
 
-        public bool Check(string value)
+        public ValidationResult Check(string value)
         {
             if (!DateTime.TryParseExact(value,
                 dateFormat,
@@ -33,10 +34,12 @@ namespace ETElevate.Core
                 DateTimeStyles.None,
                 out DateTime parsedDate))
             {
-                return false;
+                return new ValidationResult("Unable to parse date value");
             }
 
-            return parsedDate >= minDate && parsedDate <= maxDate;
+            return parsedDate >= minDate && parsedDate <= maxDate
+                ? new ValidationResult()
+                : new ValidationResult("Date is not between {minDate} and {maxDate}");
         }
     }
 }

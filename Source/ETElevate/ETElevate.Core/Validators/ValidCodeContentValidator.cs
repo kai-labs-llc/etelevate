@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using ETElevate.Core.Validators;
+using System.Collections.Generic;
 
 namespace ETElevate.Core
 {
@@ -11,14 +12,16 @@ namespace ETElevate.Core
             this.codeList = codeList;
         }
 
-        public bool Check(string value)
+        public ValidationResult Check(string value)
         {
             if (string.IsNullOrEmpty(value))
             {
-                return false;
+                return new ValidationResult("Value cannot be null or empty.");
             }
 
-            return codeList.Contains(value);
+            return codeList.Contains(value)
+                ? new ValidationResult()
+                : new ValidationResult($"Valid code list does not contain {value}");
         }
     }
 }

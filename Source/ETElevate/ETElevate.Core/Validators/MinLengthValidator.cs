@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ETElevate.Core.Validators;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -13,14 +14,16 @@ namespace ETElevate.Core
             MinCharacterCount = maxCharacterCount;
         }
 
-        public bool Check(string value)
+        public ValidationResult Check(string value)
         {
             if (string.IsNullOrWhiteSpace(value))
             {
-                return true;
+                return new ValidationResult();
             }
 
-            return value.Length >= MinCharacterCount;
+            return value.Length >= MinCharacterCount
+                ? new ValidationResult()
+                : new ValidationResult($"Character length of {value.Length} is shorter than minimum length of {MinCharacterCount}");
         }
     }
 }

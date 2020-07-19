@@ -2,17 +2,16 @@
 using Newtonsoft.Json.Converters;
 
 namespace ETElevate.Core
-{
-    [JsonConverter(typeof(StringEnumConverter))]
-    public enum ValidatorType
+{   
+    public static class ValidatorType
     {
-        None = 0,
-        Required = 1,
-        MinLength = 2,
-        MaxLength = 3,
-        Format = 4,
-        Content = 5,
-        Code = 6,
-        Date = 7
+        public const string None = "None";
+        public const string Required = "Required";
+        public const string MinLength = "MinLength";
+        public const string MaxLength = "MaxLength";
+        public const string Format = "Format";
+        public const string Content = "Content";
+        public const string Code = "Code";
+        public const string Date = "Date";
     }
 }

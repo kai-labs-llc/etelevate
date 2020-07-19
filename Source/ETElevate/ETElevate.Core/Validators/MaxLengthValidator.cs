@@ -1,4 +1,6 @@
-﻿namespace ETElevate.Core
+﻿using ETElevate.Core.Validators;
+
+namespace ETElevate.Core
 {
     public class MaxLengthValidator : IValidator
     {
@@ -9,14 +11,16 @@
             MaxCharacterCount = maxCharacterCount;
         }
 
-        public bool Check(string value)
+        public ValidationResult Check(string value)
         {
             if (string.IsNullOrWhiteSpace(value))
             {
-                return true;
+                return new ValidationResult();
             }
 
-            return value.Length <= MaxCharacterCount;
+            return value.Length <= MaxCharacterCount
+                ? new ValidationResult()
+                : new ValidationResult($"Character length of {value.Length} exceeds maximum length of {MaxCharacterCount}");
         }
     }
 }

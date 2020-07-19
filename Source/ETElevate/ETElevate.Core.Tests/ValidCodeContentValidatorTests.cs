@@ -18,9 +18,9 @@ namespace ETElevate.Core.Tests
         public void WhenCodeIsInList_Check_ReturnsTrue(string fieldValue)
         {
             var validator = new ValidCodeContentValidator(validCodes);            
-            var isValid = validator.Check(fieldValue);
+            var result = validator.Check(fieldValue);
 
-            Assert.IsTrue(isValid);
+            Assert.IsTrue(result.IsValid);
         }
 
         [Test]
@@ -32,7 +32,7 @@ namespace ETElevate.Core.Tests
         public void WhenCodeIsNotInList_Check_ReturnsFalse(string fieldValue)
         {
             var validator = new ValidCodeContentValidator(validCodes);
-            Assert.IsFalse(validator.Check(fieldValue));            
+            Assert.IsFalse(validator.Check(fieldValue).IsValid);            
         }
 
         [Test]
@@ -40,7 +40,7 @@ namespace ETElevate.Core.Tests
         {
             var validator = new ValidCodeContentValidator(validCodes);
 
-            Assert.IsFalse(validator.Check(null));
+            Assert.IsFalse(validator.Check(null).IsValid);
         }
 
         [Test]
@@ -49,8 +49,8 @@ namespace ETElevate.Core.Tests
             var validCodesWithNullAndEmpty = validCodes.Concat(new[] { null, string.Empty }).ToList();
             var validator = new ValidCodeContentValidator(validCodesWithNullAndEmpty);
 
-            Assert.IsFalse(validator.Check(null));
-            Assert.IsFalse(validator.Check(string.Empty));
+            Assert.IsFalse(validator.Check(null).IsValid);
+            Assert.IsFalse(validator.Check(string.Empty).IsValid);
         }
     }
 }

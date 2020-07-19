@@ -1,7 +1,9 @@
-﻿namespace ETElevate.Core
+﻿using ETElevate.Core.Validators;
+
+namespace ETElevate.Core
 {
     public interface IValidator
     {
-        bool Check(string value);
+        ValidationResult Check(string value);
     }
 }

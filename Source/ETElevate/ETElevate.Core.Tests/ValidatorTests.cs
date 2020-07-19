@@ -18,9 +18,9 @@ namespace ETElevate.Core.Tests
             dataRecord.SetValue(fieldName, "Michael");
 
             var validator = new RequiredValidator();
-            var isValid = validator.Check(dataRecord.GetValue(fieldName));
+            var result = validator.Check(dataRecord.GetValue(fieldName));
 
-            Assert.IsTrue(isValid);
+            Assert.IsTrue(result.IsValid);
         }
 
         [Test]
@@ -31,9 +31,9 @@ namespace ETElevate.Core.Tests
             var dataRecord = new DataRecord();
             dataRecord.SetValue(fieldName, fieldValue);
             var validator = new RequiredValidator();
-            var isValid = validator.Check(dataRecord.GetValue(fieldName));
+            var result = validator.Check(dataRecord.GetValue(fieldName));
 
-            Assert.IsFalse(isValid);
+            Assert.IsFalse(result.IsValid);
         }
 
         [Test]
@@ -58,9 +58,9 @@ namespace ETElevate.Core.Tests
             dataRecord.SetValue(fieldName, fieldValue);
 
             var validator = new MaxLengthValidator(maxLength);
-            var isValid = validator.Check(dataRecord.GetValue(fieldName));
+            var result = validator.Check(dataRecord.GetValue(fieldName));
 
-            Assert.IsTrue(isValid);
+            Assert.IsTrue(result.IsValid);
         }
 
         [Test]
@@ -71,9 +71,9 @@ namespace ETElevate.Core.Tests
             var dataRecord = new DataRecord();
             dataRecord.SetValue(fieldName, fieldValue);
             var validator = new MaxLengthValidator(maxLength);
-            var isValid = validator.Check(dataRecord.GetValue(fieldName));
+            var result = validator.Check(dataRecord.GetValue(fieldName));
 
-            Assert.IsFalse(isValid);
+            Assert.IsFalse(result.IsValid);
         }
 
         [Test]
@@ -90,15 +90,15 @@ namespace ETElevate.Core.Tests
         [TestCase("BirthDate", "01/01/0000", @"[0-9]{2}\/[0-9]{2}\/[0-9]{4}")]
         [TestCase("BirthDate", "01/01/0001", @"[0-9]{2}\/[0-9]{2}\/[0-9]{4}")]
         [TestCase("BirthDate", "12/31/9999", @"[0-9]{2}\/[0-9]{2}\/[0-9]{4}")]        
-        public void WhenFieldIsValidFormat_Format_ReturnsTrue(string fieldName, string fieldValue, string formatRegex)
+        public void WhenFieldresultFormat_Format_ReturnsTrue(string fieldName, string fieldValue, string formatRegex)
         {
             var dataRecord = new DataRecord();
             dataRecord.SetValue(fieldName, fieldValue);
 
             var validator = new FormatValidator(formatRegex);
-            var isValid = validator.Check(dataRecord.GetValue(fieldName));
+            var result = validator.Check(dataRecord.GetValue(fieldName));
 
-            Assert.IsTrue(isValid);
+            Assert.IsTrue(result.IsValid);
         }
     }
 }
